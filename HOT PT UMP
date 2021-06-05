@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void calculate_Long_Jump(float input_user_jump[5]);
+void calcualte_average_Jump(float input_user_jump[5]);
+void to_show_Participant_Info(float input_user_jump[5],char participant_name[100], char participant_no[5], char participant_team[10]);
+
+void calculate_Long_Jump(float input_user_jump[5])
+{
+    // storing the largest number to arr[0]
+  for (int i = 0; i < 5; ++i) {
+    if (input_user_jump[0] < input_user_jump[i]) {
+      input_user_jump[0] = input_user_jump[i];
+    }
+  }
+  printf("Longest jump = %.2f meter", input_user_jump[0]);
+}
+
+
+void calcualte_average_Jump(float input_user_jump[5])
+{
+    float initial_sum=0.0, jump_average;
+
+    for (int i = 0; i < 5; i++)
+    {
+        /* code */
+        initial_sum+= input_user_jump[i];
+    }
+    jump_average = initial_sum/5;
+    printf("\tAverage jump = %.2f meter", jump_average);
+
+}
+
+void to_show_Participant_Info(float input_user_jump[5],char participant_name[100], char participant_no[5], char participant_team[10])
+{
+  printf("\n---------- Result information ----------");
+  printf("\n");
+
+  printf("\nParticipant Information");
+  printf("\nName : %s",participant_name);
+  printf("\nNo. :  %s",participant_no);
+  printf("\nTeam :  %s",participant_team);
+
+  printf("\n\n");
+
+  printf("\nJumping Information");
+
+    int i,j=1;
+
+    for ( i = 0; i < 5; i++)
+    {
+        /* code */
+        printf("\nAttempt %d. = %.2f meter",j,input_user_jump[i]);
+        j++;
+    }
+    printf("\n");
+}
+
+
+
+int main ()
+{
+
+    char participant_name[100];
+    char participant_no[5];
+    char participant_team[10];
+
+    float input_user_jump[5];
+
+    printf("Participant name: ");
+    scanf("%s",&participant_name);
+    printf("Participant no: ");
+    scanf("%s",&participant_no);
+    printf("Participant team: ");
+    scanf("%s",&participant_team);
+    printf("\n");
+
+
+
+    printf("\nJumping information (in meter):");
+    int j=1;
+    for (int i = 0; i < 5; i++)
+    {
+        /* code */
+        printf("Attempt %d. = ",j);
+        scanf("%f",&input_user_jump[i]);
+        j++;
+    }
+
+    to_show_Participant_Info(input_user_jump,participant_name,participant_no,participant_team);
+    calculate_Long_Jump(input_user_jump);
+    calcualte_average_Jump(input_user_jump);
+
+}
